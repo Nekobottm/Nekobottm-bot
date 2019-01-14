@@ -9,9 +9,18 @@ from discord import Game
 
 client = commands.Bot(command_prefix = 'n.')
 
+players = {}	
+
+@client.event 
+async def on_ready():
+	print('Logged in as')
+	print("User name:", client.user.name)
+	print("User id:", client.user.id)
+	print('---------------')
+
 @client.event
 async def on_ready():
-    await client.change_presence(game=Game(name='n.help | youtube.com/nekobot'))
+    await client.change_presence(game=discord.Game(name='n.help | youtube.com/nekobot'))
     print('Ready') 
 
 @client.event
