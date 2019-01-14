@@ -15,7 +15,7 @@ players = {}
 
 @client.event
 async def on_ready():
-	await client.change_presence(game=discord.Game(name='n.help | youtube.com/nekobot'))
+	await client.change_presence(game=discord.Game(name='n.help | youtube.com/nekobot', type = 3))
 	print('Logged in as')
 	print("User name:", client.user.name)
 	print("User id:", client.user.id)
