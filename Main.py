@@ -23,10 +23,10 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-	if message.content.startswith('n.help'):
-        	embed = discord.Embed(title="Nekobot™'s Announcement", description="Bot masih dalam pembangunan dan belum terdapat command pada bot", color=0x00ff00)
-        	embed.add_field(name="Command List :", value="n.help", inline=False)
-        	embed.add_field(name="Update", value="- penambahan music play", inline=False)
+    	if message.content.startswith('r.help'):
+        	embed=discord.Embed(title="NEKOBOT™ 'S ANNOUNCEMENT", url="https://www.youtube.com/channel/UCSXSD0NwLC3eIT0yzPbkMFg", description="Nekobot masih dalam pembangunan dan masih di kembangkan", color=0x000000)
+        	embed.set_author(name="Nekobot™", url="https://www.youtube.com/channel/UCSXSD0NwLC3eIT0yzPbkMFg", icon_url="https://instagram.fcgk18-2.fna.fbcdn.net/vp/868f89f080937a0effabeb30e82f23f4/5CCAF5BE/t51.2885-19/s150x150/43054773_2180609508878724_2685255605483995136_n.jpg?_nc_ht=instagram.fcgk18-2.fna.fbcdn.net&_nc_cat=100")
+        	embed.add_field(name="Music command :", value="n.play | n.join | n.leave | n.pause | n.resume | n.stop", inline=True)
         	await client.send_message(message.channel, embed=embed)
 	if message.content.startswith('n.play '):
 		author = message.author
