@@ -23,6 +23,11 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+	if message.content.startswith('n.help'):
+        	embed = discord.Embed(title="Nekobot™'s Announcement", description="Bot masih dalam pembangunan dan belum terdapat command pada bot", color=0x00ff00)
+        	embed.add_field(name="Command List :", value="n.help", inline=False)
+        	embed.add_field(name="Update", value="- penambahan music play", inline=False)
+        	await client.send_message(message.channel, embed=embed)
 	if message.content.startswith('n.play '):
 		author = message.author
 		name = message.content.replace("n.play ", '')
