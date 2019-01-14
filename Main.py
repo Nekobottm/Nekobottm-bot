@@ -24,34 +24,26 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content.startswith('n.help'):
-        embed = discord.Embed(title="Nekobot™'s Announcement", description="Bot masih dalam pembangunan dan belum terdapat command pada bot", color=0x00ff00)
-        embed.add_field(name="Command List :", value="n.help", inline=False)
-        embed.add_field(name="Update", value="- penambahan music play", inline=False)
-        await client.send_message(message.channel, embed=embed)
-    if message.content == 'n.ping':
-        await client.send_message(message.channel,'pong')
-    
-    if message.content.startswith('xplay '):
-	author = message.author
-	name = message.content.replace("xplay ", '')
-	fullcontent = ('http://www.youtube.com/results?search_query=' + name)
-	text = requests.get(fullcontent).text
-	soup = bs4.BeautifulSoup(text, 'html.parser')
-	img = soup.find_all('img')
-	div = [ d for d in soup.find_all('div') if d.has_attr('class') and 'yt-lockup-dismissable' in d['class']]
-	a = [ x for x in div[0].find_all('a') if x.has_attr('title') ]
-	title = (a[0]['title'])
-	a0 = [ x for x in div[0].find_all('a') if x.has_attr('title') ][0]
-	url = ('http://www.youtube.com'+a0['href'])
-	delmsg = await client.send_message(message.channel, 'Now Playing ** >> ' + title + '**')
-	server = message.server
-	voice_client = client.voice_client_in(server)
-	player = await voice_client.create_ytdl_player(url)
-	players[server.id] = player
-	print("User: {} From Server: {} is playing {}".format(author, server, title))
-	player.start()
-     await client.process_commands(message)
+	if message.content.startswith('n.play '):
+		author = message.author
+		name = message.content.replace("n.play ", '')
+		fullcontent = ('http://www.youtube.com/results?search_query=' + name)
+		text = requests.get(fullcontent).text
+		soup = bs4.BeautifulSoup(text, 'html.parser')
+		img = soup.find_all('img')
+		div = [ d for d in soup.find_all('div') if d.has_attr('class') and 'yt-lockup-dismissable' in d['class']]
+		a = [ x for x in div[0].find_all('a') if x.has_attr('title') ]
+		title = (a[0]['title'])
+		a0 = [ x for x in div[0].find_all('a') if x.has_attr('title') ][0]
+		url = ('http://www.youtube.com'+a0['href'])
+		delmsg = await client.send_message(message.channel, 'Now Playing ** >> ' + title + '**')
+		server = message.server
+		voice_client = client.voice_client_in(server)
+		player = await voice_client.create_ytdl_player(url)
+		players[server.id] = player
+		print("User: {} From Server: {} is playing {}".format(author, server, title))
+		player.start()
+	await client.process_commands(message)
 
 @client.command(pass_context=True, no_pm=True)
 async def join(ctx):
