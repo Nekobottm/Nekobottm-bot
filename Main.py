@@ -44,6 +44,13 @@ async def on_message(message):
 		print("User: {} From Server: {} is playing {}".format(author, server, title))
 		player.start()
 	await client.process_commands(message)
+    	if message.content.startswith('n.help'):
+        	embed = discord.Embed(title="Nekobot™'s Announcement", description="Bot masih dalam pembangunan dan belum terdapat command pada bot", color=0x00ff00)
+        	embed.add_field(name="Command List :", value="n.help", inline=False)
+        	embed.add_field(name="Update", value="- penambahan music play", inline=False)
+        await client.send_message(message.channel, embed=embed)
+    	if message.content == 'n.ping':
+        await client.send_message(message.channel,'pong')
 
 @client.command(pass_context=True, no_pm=True)
 async def join(ctx):
