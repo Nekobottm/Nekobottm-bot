@@ -1,2 +1,0 @@
-# Nekobottm-bot
-Bot
