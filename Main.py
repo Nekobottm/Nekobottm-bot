@@ -10,6 +10,7 @@ import youtube_dl
 from discord import opus
 
 client = commands.Bot(command_prefix = 'n.')
+client.remove_command("help")
 
 players = {}
 
