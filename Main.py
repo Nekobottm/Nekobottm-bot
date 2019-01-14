@@ -3,25 +3,23 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 import asyncio
 import time
+import requests, bs4
 import os
 import random
-from discord import Game
+import youtube_dl
+from discord import opus
 
 client = commands.Bot(command_prefix = 'n.')
 
-players = {}	
+players = {}
 
-@client.event 
+@client.event
 async def on_ready():
+	await client.change_presence(game=discord.Game(name='n.help | youtube.com/nekobot'))
 	print('Logged in as')
 	print("User name:", client.user.name)
 	print("User id:", client.user.id)
 	print('---------------')
-
-@client.event
-async def on_ready():
-    await client.change_presence(game=discord.Game(name='n.help | youtube.com/nekobot'))
-    print('Ready') 
 
 @client.event
 async def on_message(message):
