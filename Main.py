@@ -53,7 +53,7 @@ async def on_message(message):
 		title = (a[0]['title'])
 		a0 = [ x for x in div[0].find_all('a') if x.has_attr('title') ][0]
 		url = ('http://www.youtube.com'+a0['href'])
-		delmsg = await client.send_message(message.channel, '▶ Memutar musik ** | ' + title + ' | **')
+		delmsg = await client.send_message(message.channel, '▶ **Memutar musik** ```| ' + title + ' |```')
 		server = message.server
 		voice_client = client.voice_client_in(server)
 		player = await voice_client.create_ytdl_player(url)
@@ -71,7 +71,7 @@ async def on_message(message):
 async def join(ctx):
     channel = ctx.message.author.voice.voice_channel
     await client.join_voice_channel(channel)
-    await client.say('⏹ Telah Masuk Ke Voice Channel: **[' + str(channel) + ']**')
+    await client.say('**⏹ Telah Masuk Ke Voice Channel:** ```[' + str(channel) + ']```')
 
 @client.command(pass_context=True, no_pm=True)
 async def leave(ctx):
@@ -79,7 +79,7 @@ async def leave(ctx):
     channel = ctx.message.author.voice.voice_channel
     voice_client = client.voice_client_in(server)
     await voice_client.disconnect()
-    await client.say("🔀 Telah Berhasil Keluar Dari **[{}]**".format(channel))
+    await client.say("🔀 **Telah Berhasil Keluar Dari** ```[{}]```".format(channel))
 
 @client.command(pass_context=True)
 async def pause(ctx):
@@ -92,12 +92,12 @@ async def stop(ctx):
     author = ctx.message.author
     id = ctx.message.server.id
     players[id].stop()
-    await client.say("⏺ ***Musik Sedang Di Stop*** ")
+    await client.say("⏺ **Musik Sedang Di Stop** ")
 
 @client.command(pass_context=True)
 async def resume(ctx):
     id = ctx.message.server.id
     players[id].resume()
-    await client.say("▶ ***Memutar Musik Kembali***")
+    await client.say("▶ **Memutar Musik Kembali**")
     
 client.run(os.environ['BOT_TOKEN'])
