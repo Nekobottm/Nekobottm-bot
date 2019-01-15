@@ -21,7 +21,22 @@ async def on_ready():
 	print("User name:", client.user.name)
 	print("User id:", client.user.id)
 	print('---------------')
+	
+@client.event
+async def on_member_join(member):
+    server = member.server
+    channel = client.get_channel("534557148705718273")
+    embed = discord.Embed(title="👋 {} just joined {}".format(member.name, server.name), description="Welcome! to {} {}! Enjoy your stay here!".format(server.name, member.name), color=0x00ff00)
+    embed.set_thumbnail(url=member.avatar_url)
+    await client.send_message(channel, embed=embed)
 
+@client.event
+async def on_member_remove(member):
+    channel = client.get_channel("534557148705718273")
+    embed = discord.Embed(title="👋 {} just left the server.".format(member.name), description="Goodbye! {} hope to see you again".format(member.name), color=0x00ff00)
+    embed.set_thumbnail(url=member.avatar_url)
+    await client.send_message(channel, embed=embed)
+	
 @client.event
 async def on_message(message):
 	if message.content.startswith('n.play '):
