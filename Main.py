@@ -11,6 +11,9 @@ from discord import opus
 
 Client = discord.client
 client = commands.Bot(command_prefix = 'n.')
+client.remove_command("help")
+
+players = {}
 Clientdiscord = discord.Client()
 
 @client.event
