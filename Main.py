@@ -55,7 +55,7 @@ async def on_message(message):
 async def join(ctx):
     channel = ctx.message.author.voice.voice_channel
     await client.join_voice_channel(channel)
-    await client.say('⏸ Telah Masuk Ke Voice Channel: **[' + str(channel) + ']**')
+    await client.say('⏹ Telah Masuk Ke Voice Channel: **[' + str(channel) + ']**')
 
 @client.command(pass_context=True, no_pm=True)
 async def leave(ctx):
@@ -69,7 +69,7 @@ async def leave(ctx):
 async def pause(ctx):
     id = ctx.message.server.id
     players[id].pause()
-    await client.say("⏹ **Musik Sedang Di Pause**")
+    await client.say("⏸ **Musik Sedang Di Pause**")
 
 @client.command(pass_context=True)
 async def stop(ctx):
