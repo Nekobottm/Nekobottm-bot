@@ -66,6 +66,9 @@ async def on_message(message):
 		embed.add_field(name="Music command :", value="n.play | n.join | n.leave | n.pause | n.resume | n.stop", inline=True)
 		await client.send_message(message.channel, embed=embed)
 	await client.process_commands(message)
+	if message.content.startswith('n.invite'):
+		embed = discord.Embed(title="Invite Nekobot™", url="https://discordapp.com/oauth2/authorize?client_id=480637618485460992&scope=bot&permissions=###", description="klik link diatas untuk direct invite", color=0x000000)
+		await client.send_message(message.channel, embed=embed)
  
 @client.command(pass_context=True, no_pm=True)
 async def join(ctx):
