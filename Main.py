@@ -14,7 +14,6 @@ client = commands.Bot(command_prefix = 'n.')
 client.remove_command("help")
 
 players = {}
-Clientdiscord = discord.Client()
 
 @client.event
 async def on_ready():
